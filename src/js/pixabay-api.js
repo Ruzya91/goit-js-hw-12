@@ -6,7 +6,7 @@ console.log('API KEY:', API_KEY);
 
 const BASE_URL = 'https://pixabay.com/api/';
 
-export async function fetchImages(query) {
+export async function fetchImages(query, page, perPage) {
   try {
     const response = await axios.get(BASE_URL, {
       params: {
@@ -15,6 +15,8 @@ export async function fetchImages(query) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
+        page: page,
+        per_page: perPage,
       },
     });
     return response.data.hits;
